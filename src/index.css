@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+
+
+.card-sm {
+    @apply bg-surface m-6 p-7 font-bold rounded-[2.5rem] text-on-surface-variant-2;
+  }
+.card-variant {
+    @apply bg-background  p-7 font-bold rounded-md text-on-surface-variant-2 mb-3;
+  }
+
+.card-title{
+    @apply font-bold text-2xl mb-4
+}  
