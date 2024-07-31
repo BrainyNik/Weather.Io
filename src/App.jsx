@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import Navbar from './components/navbar'
 import CurrentWeather from './components/currentWeather'
@@ -9,21 +7,19 @@ import TodaysHighlights from './components/todaysHighlights'
 import TodayAt from './components/TodayAt/todayAt'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className="bg-background h-screen w-screen text-white overflow-x-hidden">
-        <Navbar/>
-        <div className='md:flex '>
-          <div>
-            <CurrentWeather/>
-            <DaysForecast/>
-          </div>
-          <div>
-            <TodaysHighlights/>
-            <TodayAt/>
-          </div>
+      <div className="bg-background h-screen w-screen overflow-hidden md:grid md:grid-cols-3">
+        <Navbar />
+        <div className="mt-[80px]">
+          <CurrentWeather />
+          <DaysForecast />
+        </div>
+        <div className="mt-[80px] col-span-2  overflow-y-auto custom-scrollbar">
+          <TodaysHighlights />
+          <TodayAt />
+
         </div>
       </div>
     </>

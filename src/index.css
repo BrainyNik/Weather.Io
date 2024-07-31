@@ -2,19 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
-
-
-
-
 .card-sm {
-    @apply bg-surface m-6 p-7 font-bold rounded-[2.5rem] text-on-surface-variant-2;
-  }
+  @apply bg-surface m-6 p-7 font-bold rounded-[2.5rem] text-on-surface-variant-2;
+}
 .card-variant {
-    @apply bg-background  p-7 font-bold rounded-md text-on-surface-variant-2 mb-3;
-  }
+  @apply bg-background  p-7 font-bold rounded-md text-on-surface-variant-2 mb-3;
+}
 
-.card-title{
-    @apply font-bold text-2xl mb-4
-}  
+.card-title {
+  @apply font-bold text-2xl mb-4;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  scrollbar-width: 1rem;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #1d1c1f #131214;
+  scroll-behavior: smooth;
+  scrollbar-arrow-color: transparent;
+  scrollbar-base-color: transparent;
+}
+.hide-scrollbar-arrows::-webkit-scrollbar-button {
+  display: none;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
