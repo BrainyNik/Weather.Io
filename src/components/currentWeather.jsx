@@ -1,20 +1,23 @@
-import sun from "../assets/weather_icons/01d.png"
-import { Calendar, MapPin } from 'lucide-react'
+import sun from "../assets/weather_icons/01d.png";
+import { Calendar, MapPin } from "lucide-react";
 
 const CurrentWeather = () => {
   return (
-    <div className='card-sm'>
-      <p className='text-xl'>Now</p>
-      <div className='flex items-center  justify-between '>
-        <p className='text-8xl max-lg:text-4xl'>25°c</p>
+    <div className="card-sm">
+      <p className="text-xl">Now</p>
+      <div className="flex items-center  justify-between ">
+        <p className="text-8xl max-lg:text-4xl">25°c</p>
         <img src={sun} alt="" className="max-lg:w-10 max-lg:h-10" />
       </div>
-      <p className='text-xl border-b border-outline py-3'>Overcast Clouds</p>
-      <p className='py-3 flex items-center gap-4 text-xl'><Calendar /> Thursday 16, Feb</p>
-      <p className='py-3 flex items-center gap-4 text-xl'><MapPin /> Pune</p>
-
+      <p className="text-xl border-b border-outline py-3">Overcast Clouds</p>
+      <p className="py-3 flex items-center gap-4 text-xl">
+        <Calendar /> Thursday 16, Feb
+      </p>
+      <p className="py-3 flex items-center gap-4 text-xl">
+        <MapPin /> Pune
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default CurrentWeather
+export default CurrentWeather;
