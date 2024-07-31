@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='flex items-center justify-between p-5 h-[80px] fixed top-0 left-0 w-screen '>
+    <div className='flex items-center justify-between p-5 h-[80px] fixed top-0 left-0 w-screen bg-background'>
       <div><img src={logo} alt="" className='object-cover w-[150px]' /></div>
       <div className='flex items-center justify-end md:justify-between gap-4 w-7/12'>
         <div className='flex items-center  gap-3 bg-surface p-3 rounded-full'>

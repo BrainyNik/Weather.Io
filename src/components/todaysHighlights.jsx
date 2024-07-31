@@ -7,18 +7,18 @@ const TodaysHighlights = () => {
             <p className='font-bold text-2xl mb-4'>Todays Highlights</p>
 
             <div className='card-variant '>
-                <p className='font bold text-xl flex justify-between mb-4'>Air Quality Index <span>Good</span></p>
+                <p className='font bold md:text-xl flex justify-between mb-4'>Air Quality Index <span>Good</span></p>
 
-                <div className='flex items-center justify-between'>
+                <div className='flex items-center justify-between md:text-3xl'>
                     <img src={moon} alt="" className='w-11' />
 
-                    <div className='font-bold text-3xl'>
-                        <p>23.3 <span className='text-lg'>PM2.5</span></p>
-                        <p>23.3 <span className='text-lg'>PM2.5</span></p>
+                    <div className='  '>
+                        <p>23.3 <span className='text-[10px] md:text-lg'>PM2.5</span></p>
+                        <p>23.3 <span className='text-[10px] md:text-lg'>PM2.5</span></p>
                     </div>
-                    <div className='font-bold text-3xl'>
-                        <p>23.3 <span className='text-lg'>PM2.5</span></p>
-                        <p>23.3 <span className='text-lg'>PM2.5</span></p>
+                    <div className=' '>
+                        <p>23.3 <span className='text-[10px]'>PM2.5</span></p>
+                        <p>23.3 <span className='text-[10px]'>PM2.5</span></p>
                     </div>
 
                 </div>
@@ -27,12 +27,12 @@ const TodaysHighlights = () => {
 
             <div className='card-variant'>
                 <p className='card-title'> Sunrise & Sunset</p>
-                <div className='flex items-center justify-around'>
-                    <div className='flex gap-4'>
-                        <img src={moon} alt="" className='w-11' />
+                <div className='flex md:items-center md:justify-around flex-col md:flex-row gap-4'>
+                    <div className='flex gap-7 '>
+                        <img src={moon} alt="" className='w-11 ' />
                         <p className='flex flex-col text-on-surface-variant'>Sunrise <span className='text-3xl text-on-surface-variant-2'>6:30 AM</span></p>
                     </div>
-                    <div className='flex gap-4'>
+                    <div className='flex  gap-7'>
                         <img src={moon} alt="" className='w-11' />
                         <p className='flex flex-col text-on-surface-variant'>Sunset <span className='text-3xl text-on-surface-variant-2'>6:30 PM</span></p>
                     </div>
