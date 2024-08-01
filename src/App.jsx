@@ -22,7 +22,8 @@ function App() {
 
     <h2 className='text-2xl flex gap-1 items-center'><Cloud className='h-10 w-10' /> Fetching Weather Data</h2>
   </div>
-  if (error) return <div className='h-screen w-screen bg-background flex gap-3 text-on-surface items-center justify-center  font-bold'> <UmbrellaOffIcon className='fixed top-[35%] size-60 opacity-30'/><p className='flex flex-col text-center text-2xl'> Oops Something Went Wrong <span className='text-3xl tracking-wider'>Please Try Again Later</span></p></div>
+  if (error) return <div className='h-screen w-screen bg-background flex flex-col gap-3 text-on-surface items-center justify-center  font-bold'> <UmbrellaOffIcon className='fixed top-[35%] size-60 opacity-30'/><p className='flex flex-col text-center text-2xl mt-28 mb-20'> Oops Something Went Wrong <span className='text-3xl tracking-wider'>Please Try Again Later</span></p>
+  <a href="/" className='p-3  bg-primary text-xl cursor-pointer text-on-primary font-bold rounded-full z-30'>Home</a></div>
 
 
 
