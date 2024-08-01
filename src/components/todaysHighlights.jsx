@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import formatDateTime from "../utils/formatDateTime";
 import { getAirQuality, getAQIBackground } from "../utils/airQuality";
-import { AirVent, GaugeIcon, Sunrise, Sunset, Thermometer, View } from "lucide-react";
+import { AirVent, GaugeIcon, Sunrise, Sunset, Thermometer, View, Music2, AudioLines } from "lucide-react";
 
 import { WiHumidity } from "react-icons/wi";
 const TodaysHighlights = ({ airQualityComponents,
@@ -19,12 +19,15 @@ const TodaysHighlights = ({ airQualityComponents,
             <p className='font-bold text-2xl mb-4'>Todays Highlights</p>
 
             <div className='card-variant '>
-                <p className='font bold md:text-xl flex justify-between mb-4'>Air Quality Index <span className={`${getAQIBackground(airQualityIndex)} px-2 rounded-lg text-white`} >{aq}</span></p>
+                <div className='font bold md:text-xl flex items-center justify-between mb-4'>Air Quality Index 
+                <div className="flex items-center gap-4">
+                    <AirVent className="h-10 w-10 mt-3" />
+                    <span className={`${getAQIBackground(airQualityIndex)} px-2 rounded-lg text-white`} >{aq}</span>
+                </div>
+                </div>
 
                 <div className='flex items-center justify-between md:text-3xl '>
-                    <div className="">
-                        <AirVent className="h-10 w-10 " />
-                    </div>
+                    
 
                     <div className=''>
                         <p>{airQualityComponents?.co} <span className='text-[10px] md:text-lg'>CO</span></p>
@@ -51,20 +54,29 @@ const TodaysHighlights = ({ airQualityComponents,
 
             </div>
 
-            <div className='card-variant'>
-                <p className='card-title'> Sunrise & Sunset</p>
-                <div className='flex md:items-center md:justify-around flex-col md:flex-row gap-4'>
-                    <div className='flex gap-7 items-center '>
-                        <Sunrise className="h-8 w-8" />
-                        <p className='flex flex-col text-on-surface-variant'>Sunrise <span className='text-3xl text-on-surface-variant-2'>{formatDateTime(sunrise, timezone, "hh:mm a")}</span></p>
+            <div className="flex flex-col lg:flex-row gap-3">
+                <div className='card-variant lg:w-1/3'>
+                    <p className='card-title'> Sunrise & Sunset</p>
+                    <div className='flex flex-col md:text-xl   lg:items-center md:justify-around   gap-4'>
+                        <div className='flex gap-7 items-center '>
+                            <Sunrise className="h-8 w-8" />
+                            <p className='flex flex-col text-on-surface-variant'>Sunrise <span className='text-3xl md:text-2xl text-on-surface-variant-2'>{formatDateTime(sunrise, timezone, "hh:mm a")}</span></p>
+                        </div>
+                        <div className='flex items-center  gap-7'>
+                            <Sunset className='h-8 w-8' />
+                            <p className='flex flex-col text-on-surface-variant'>Sunset <span className='text-3xl  md:text-2xl text-on-surface-variant-2'>{formatDateTime(sunset, timezone, "hh:mm a")}</span></p>
+                        </div>
                     </div>
-                    <div className='flex items-center  gap-7'>
-                        <Sunset className='h-8 w-8' />
-                        <p className='flex flex-col text-on-surface-variant'>Sunset <span className='text-3xl text-on-surface-variant-2'>{formatDateTime(sunset, timezone, "hh:mm a")}</span></p>
-                    </div>
-
-
                 </div>
+
+                <div className="card-variant w-full">
+                    <p className="card-title">Activities</p>
+                    <p className="text-lg mb-2">Its Cloudy Outside</p>
+                    <p className="text-2xl mb-3">Go for A Walk <span>emoji</span></p>
+                    <a href="/">
+                        <div className="bg-surface p-3 rounded-lg"><p className="md:text-xl flex items-center gap-1 md:gap-6"><Music2 className="w-6 md:w-8"/>Thunderstorm ambient sounds 🌩️<AudioLines className="w-6 md:w-8"/></p></div>
+                    </a>
+                                        </div>
             </div>
 
             <div className='card-variant'>

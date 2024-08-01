@@ -15,7 +15,7 @@ const DaysForecast = ({ forecastData }) => {
     return (
         <div>
             <p className='m-6 font-bold text-xl text-on-surface-variant'>5 Days Forecast</p>
-            <div className='card-sm overflow-y-scroll max-h-[250px] mb-3 custom-scrollbar'>
+            <div className='card-sm  overflow-y-scroll max-h-[250px] mb-3 custom-scrollbar'>
                 {groupForecasts.slice(0, 5).map((dayForecasts, index) => (
                     <div key={index} className='mb-6'>
                         <p className='font-bold text-lg mb-2'>{`Day ${index + 1}`}</p>

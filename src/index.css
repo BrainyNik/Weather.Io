@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .card-sm {
-  @apply bg-surface m-6 p-7 font-bold rounded-[2.5rem] text-on-surface-variant-2;
+  @apply bg-surface m-6 p-7 font-bold rounded-[1rem] text-on-surface-variant-2;
 }
 .card-variant {
   @apply bg-background  p-7 font-bold rounded-md text-on-surface-variant-2 mb-3;

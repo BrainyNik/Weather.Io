@@ -38,10 +38,13 @@ const Navbar = ({ setCoord, setSearchQuery }) => {
   return (
     <div className='flex items-center justify-between p-5 h-[80px] fixed top-0 left-0 w-screen bg-background'>
       <div><img src={logo} alt="" className='object-cover w-[150px]' /></div>
-      <div className='flex items-center justify-end md:justify-between gap-4 w-7/12'>
+      <div className='flex items-center justify-end md:justify-between gap-4 '>
+
+
         <form className='flex items-center  gap-3 bg-surface p-3 rounded-full' onSubmit={HandleOnSubmit}>
 
-          <SearchIcon className='h-7 w-7 text-white ' />
+          <SearchIcon className='h-7 w-7 text-white hidden md:block' />
+
 
           <button onClick={toggleMenu} className='md:hidden'>
             <SearchIcon className='h-7 w-7 text-white md:hidden' />
@@ -50,8 +53,10 @@ const Navbar = ({ setCoord, setSearchQuery }) => {
 
           <input type="text" placeholder='Search city...' value={search} onChange={(e) => setSearch(e.target.value)} className='bg-transparent w-[350px] outline-none hidden md:block text-white' />
         </form>
-        <div className='flex items-center  gap-1  p-3 rounded-full bg-on-surface-variant md:bg-primary hover:bg-primary cursor-pointer'>
-          <button className='flex gap-3 ' onClick={handleGetCurrentLocation}>
+
+        <div className='flex items-center  gap-2   cursor-pointer'>
+        <button className='text-on-surface font-bold text-lg  bg-surface p-3 w-[40px] h-[40px] rounded-full'>&deg; F</button>
+          <button className='flex gap-3  bg-on-surface-variant md:bg-primary p-3 rounded-full hover:bg-primary' onClick={handleGetCurrentLocation}>
             <LocateFixedIcon className='h-7 w-7' />
             <p className='hidden lg:block'>Current location</p>
           </button>

@@ -22,7 +22,7 @@ const CurrentWeather = ({ temperature,
     <div className="card-sm">
       <p className="text-xl">Now</p>
       <div className="flex items-center  justify-between ">
-        <p className="text-8xl max-lg:text-4xl">{temperature}&deg;C</p>
+        <p className="text-8xl max-xl:text-4xl">{temperature}&deg;C</p>
         <img src={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`} alt="weather-icon" className="max-lg:w-10 max-lg:h-10" />
       </div>
       <p className="text-xl border-b border-outline py-3">{capitalizeFirstLetters(weatherDescription)}</p>
