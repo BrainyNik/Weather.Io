@@ -7,6 +7,7 @@ import TodaysHighlights from './components/todaysHighlights'
 import TodayAt from './components/TodayAt/todayAt'
 import useGetWeatherData from './hooks/useGetWeatherData'
 import { useState } from 'react'
+import { Cloud, Loader2Icon } from 'lucide-react'
 function App() {
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,7 +16,12 @@ function App() {
   const [unit, setUnit] = useState("metric");
   const [currentWeather, forecast, airQuality, loading, error] = useGetWeatherData(searchQuery, coord, unit);
 
-  if (loading) return <>loading...</>
+  if (loading) return <div className='h-screen w-screen bg-background flex flex-col text-white items-center justify-center'>
+
+    <Loader2Icon className='h-36 w-36 animate-spin text-white' />
+
+    <h2 className='text-2xl flex gap-1 items-center'><Cloud className='h-10 w-10' /> Fetching Weather Data</h2>
+  </div>
   if (error) return <>error....</>
 
 
