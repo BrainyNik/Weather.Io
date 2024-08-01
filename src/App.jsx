@@ -7,7 +7,7 @@ import TodaysHighlights from './components/todaysHighlights'
 import TodayAt from './components/TodayAt/todayAt'
 import useGetWeatherData from './hooks/useGetWeatherData'
 import { useState } from 'react'
-import { Cloud, Loader2Icon } from 'lucide-react'
+import { Cloud, Loader2Icon, CrossIcon } from 'lucide-react'
 function App() {
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,7 +22,7 @@ function App() {
 
     <h2 className='text-2xl flex gap-1 items-center'><Cloud className='h-10 w-10' /> Fetching Weather Data</h2>
   </div>
-  if (error) return <>error....</>
+  if (error) return <div className='h-screen w-screen bg-background flex gap-3 text-on-surface items-center justify-center  font-bold'> <CrossIcon className='rotate-45 size-16'/><p className='flex flex-col  text-xl'> Oops Something Went Wrong <span className='text-3xl'>Please Try Aain Later</span></p></div>
 
 
 
