@@ -1,24 +1,21 @@
+/* eslint-disable react/prop-types */
 import TodayAtCard from './todayAtCard';
-import moon from "../../assets/weather_icons/01n.png"; // Example icon, adjust as needed
 import TodayAtCard2 from './todayAtCard2';
 
-const cardData = [
-  { time: "03 PM", temperature: 25, icon: moon },
-  { time: "03 PM", temperature: 25, icon: moon },
-  { time: "03 PM", temperature: 25, icon: moon },
-  { time: "03 PM", temperature: 25, icon: moon },
-  { time: "03 PM", temperature: 25, icon: moon },
-  { time: "03 PM", temperature: 25, icon: moon },
-  { time: "03 PM", temperature: 25, icon: moon },
-  // Add more card data as needed
-  { time: "03 PM", temperature: 25, icon: moon },
-  { time: "03 PM", temperature: 25, icon: moon },
-  { time: "03 PM", temperature: 25, icon: moon },
 
-];
 
-const TodayAt = () => {
+function getTodaysWeatherForecast(list, date) {
+  const newList = list.filter((ele) => {
+    return ele.dt_txt.split(" ")[0] === date;
+  })
 
+  return newList
+}
+const TodayAt = ({ forecastData, timezone }) => {
+
+  const date = new Date().toISOString()
+
+  const todaysForecast = getTodaysWeatherForecast(forecastData.list, date.split("T")[0])
 
   return (
     <div className='  '>
@@ -29,12 +26,13 @@ const TodayAt = () => {
       </div>
       <div className='flex items-center  overflow-x-scroll mb-7 custom-scrollbar .hide-scrollbar-arrows pb-2'>
 
-        {cardData.map((data, index) => (
+        {todaysForecast.map((data, index) => (
 
           <TodayAtCard
-            time={data.time}
-            temperature={data.temperature}
-            icon={data.icon}
+            secs={data?.dt}
+            temperature={data?.main?.temp}
+            icon={data?.weather[0]?.icon}
+            timezone={timezone}
             key={index}
           />
 
@@ -43,12 +41,12 @@ const TodayAt = () => {
       </div>
       <div className='flex items-center  overflow-x-scroll mb-7 custom-scrollbar .hide-scrollbar-arrows  pb-2'>
 
-        {cardData.map((data, index) => (
 
+        {todaysForecast.map((data, index) => (
           <TodayAtCard2
-            time={data.time}
-            temperature={data.temperature}
-            icon={data.icon}
+            secs={data?.dt}
+            wind={data.wind}
+            timezone={timezone}
             key={index}
           />
 
