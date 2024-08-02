@@ -11,7 +11,7 @@ function getTodaysWeatherForecast(list, date) {
 
   return newList
 }
-const TodayAt = ({ forecastData, timezone }) => {
+const TodayAt = ({ forecastData, timezone, unit }) => {
 
   const date = new Date().toISOString()
 
@@ -34,6 +34,7 @@ const TodayAt = ({ forecastData, timezone }) => {
             icon={data?.weather[0]?.icon}
             timezone={timezone}
             key={index}
+            unit={unit}
           />
 
         ))}
@@ -48,6 +49,7 @@ const TodayAt = ({ forecastData, timezone }) => {
             wind={data.wind}
             timezone={timezone}
             key={index}
+            unit={unit}
           />
 
         ))}
