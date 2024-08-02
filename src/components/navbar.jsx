@@ -62,7 +62,8 @@ const Navbar = ({ setCoord, setSearchQuery, unit, setUnit }) => {
         <div className='flex items-center  gap-2   cursor-pointer'>
           <button
             onClick={ToggleUnit}
-            className='text-on-surface font-bold text-lg  bg-surface p-3 w-12 h-12 rounded-full flex items-center justify-center'>&deg; {unit === "metric" ? "C" : "F"}</button>
+            className='text-on-surface font-bold md:text-lg text-[1rem] bg-surface p-3 w-12 h-12 rounded-full flex items-center justify-center'>
+            &deg; {unit === "metric" ? "C" : "F"}</button>
           <button className='flex gap-3  bg-on-surface-variant md:bg-primary p-3 rounded-full hover:bg-primary' onClick={handleGetCurrentLocation}>
             <LocateFixedIcon className='h-7 w-7' />
             <p className='hidden lg:block'>Current location</p>

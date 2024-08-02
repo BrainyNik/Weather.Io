@@ -47,20 +47,20 @@ const TodaysHighlights = ({
 
                 <div className='flex items-center justify-between md:text-3xl'>
                     <div>
-                        <p>{airQualityComponents?.co} <span className='text-[10px] md:text-lg'>CO</span></p>
-                        <p>{airQualityComponents?.no} <span className='text-[10px] md:text-lg'>NO</span></p>
+                        <p className="text-[12px]">{airQualityComponents?.co}<span className='text-[10px] md:text-lg'>CO</span></p>
+                        <p className="text-[12px]">{airQualityComponents?.no}<span className='text-[10px] md:text-lg'>NO</span></p>
                     </div>
                     <div>
-                        <p>{airQualityComponents?.o3} <span className='md:text-lg text-[10px]'>O3</span></p>
-                        <p>{airQualityComponents?.so2} <span className='md:text-lg text-[10px]'>SO2</span></p>
+                        <p className="text-[12px]">{airQualityComponents?.o3}<span className='md:text-lg text-[10px]'>O3</span></p>
+                        <p className="text-[12px]">{airQualityComponents?.so2}<span className='md:text-lg text-[10px]'>SO2</span></p>
                     </div>
                     <div>
-                        <p>{airQualityComponents?.pm2_5} <span className='md:text-lg text-[10px]'>PM 2.5</span></p>
-                        <p>{airQualityComponents?.pm10} <span className='md:text-lg text-[10px]'>PM 10</span></p>
+                        <p className="text-[12px]">{airQualityComponents?.pm2_5}<span className='md:text-lg text-[10px]'>PM 2.5</span></p>
+                        <p className="text-[12px]">{airQualityComponents?.pm10}<span className='md:text-lg text-[10px]'>PM 10</span></p>
                     </div>
                     <div>
-                        <p>{airQualityComponents?.nh3} <span className='md:text-lg text-[10px]'>NH3</span></p>
-                        <p>{airQualityComponents?.no2} <span className='md:text-lg text-[10px]'>NO2</span></p>
+                        <p className="text-[12px]">{airQualityComponents?.nh3} <span className='md:text-lg text-[10px]'>NH3</span></p>
+                        <p className="text-[12px]">{airQualityComponents?.no2} <span className='md:text-lg text-[10px]'>NO2</span></p>
                     </div>
                 </div>
             </div>
