@@ -11,9 +11,9 @@ const TodaysHighlights = ({
     sunrise,
     sunset,
     humidity,
-    pressure,
-    visibility,
-    temperature,
+    pressure, // in hPa
+    visibility, // in meters
+    temperature, // in Kelvin
     timezone,
     unit,
     weather
@@ -22,6 +22,16 @@ const TodaysHighlights = ({
     const temperatureUnit = isMetric ? '°C' : '°F';
     const pressureUnit = isMetric ? 'hPa' : 'inHg';
     const visibilityUnit = isMetric ? 'km' : 'mi';
+
+    // Convert units
+
+    const pressureInInHg = pressure * 0.02953;
+    const visibilityInKm = visibility / 1000;
+
+    const temperatureDisplay = isMetric ? temperature : temperature
+    const pressureDisplay = isMetric ? pressure.toFixed(1) : pressureInInHg.toFixed(1);
+    const visibilityDisplay = isMetric ? visibilityInKm.toFixed(1) : (visibility / 1609.34).toFixed(1); // Convert meters to miles
+
     const aq = getAirQuality(airQualityIndex);
 
     // Get suggestions based on the current weather
@@ -29,9 +39,34 @@ const TodaysHighlights = ({
     let activityIndex = 0;
 
     if (suggestions.activities && suggestions.activities.length > 0) {
-        // Generate a random index within the bounds of the activities array
         activityIndex = Number(Math.floor(Math.random() * suggestions.activities.length));
     }
+
+    // Define messages based on ranges
+    const getHumidityMessage = (humidity) => {
+        if (humidity > 80) return "High humidity; risk of mold and mildew.";
+        if (humidity > 60) return "Moderate humidity; may feel damp.";
+        return "Low humidity; air may feel dry.";
+    };
+
+    const getPressureMessage = (pressure) => {
+        if (pressure < 1000) return "Low pressure; potential for stormy weather.";
+        if (pressure > 1020) return "High pressure; generally fair weather.";
+        return `Normal pressure;
+         typical weather conditions.`;
+    };
+
+    const getVisibilityMessage = (visibility) => {
+        if (visibility < 1) return "Low visibility; caution advised for travel.";
+        if (visibility < 5) return "Moderate visibility; good for most activities.";
+        return "High visibility; clear conditions.";
+    };
+
+    const getTemperatureMessage = (temperature) => {
+        if (temperature > 30) return "Hot weather; stay hydrated and cool.";
+        if (temperature < 0) return "Cold weather; dress warmly.";
+        return "Mild weather; generally comfortable.";
+    };
 
     return (
         <div className='card-sm'>
@@ -47,16 +82,16 @@ const TodaysHighlights = ({
 
                 <div className='flex items-center justify-between md:text-3xl'>
                     <div>
-                        <p className="text-[12px]">{airQualityComponents?.co}<span className='text-[10px] md:text-lg'>CO</span></p>
-                        <p className="text-[12px]">{airQualityComponents?.no}<span className='text-[10px] md:text-lg'>NO</span></p>
+                        <p className="md:text-lg text-[12px]">{airQualityComponents?.co}<span className='text-[10px] md:text-lg'>CO</span></p>
+                        <p className="md:text-lg text-[12px]">{airQualityComponents?.no}<span className='text-[10px] md:text-lg'>NO</span></p>
                     </div>
                     <div>
-                        <p className="text-[12px]">{airQualityComponents?.o3}<span className='md:text-lg text-[10px]'>O3</span></p>
-                        <p className="text-[12px]">{airQualityComponents?.so2}<span className='md:text-lg text-[10px]'>SO2</span></p>
+                        <p className="md:text-lg text-[12px]">{airQualityComponents?.o3}<span className='md:text-lg text-[10px]'>O3</span></p>
+                        <p className="md:text-lg text-[12px]">{airQualityComponents?.so2}<span className='md:text-lg text-[10px]'>SO2</span></p>
                     </div>
                     <div>
-                        <p className="text-[12px]">{airQualityComponents?.pm2_5}<span className='md:text-lg text-[10px]'>PM 2.5</span></p>
-                        <p className="text-[12px]">{airQualityComponents?.pm10}<span className='md:text-lg text-[10px]'>PM 10</span></p>
+                        <p className="md:text-lg text-[12px]">{airQualityComponents?.pm2_5}<span className='md:text-lg text-[10px]'>PM 2.5</span></p>
+                        <p className="md:text-lg text-[12px]">{airQualityComponents?.pm10}<span className='md:text-lg text-[10px]'>PM 10</span></p>
                     </div>
                     <div>
                         <p className="text-[12px]">{airQualityComponents?.nh3} <span className='md:text-lg text-[10px]'>NH3</span></p>
@@ -98,30 +133,50 @@ const TodaysHighlights = ({
 
             <div className='card-variant'>
                 <p className="card-title">Humidity</p>
-                <div className='flex items-center justify-between text-3xl'>
+                <div className='flex flex-col md:flex-row items-center  justify-between text-3xl'>
                     <WiHumidity className="h-10 w-10" />
-                    <p>{humidity}%</p>
+                    <div className="flex flex-col items-center gap-1 ">
+                        <p>{humidity}%</p>
+                        <p className="text-sm text-gray-500">{getHumidityMessage(humidity).split(";")[0]}</p>
+                        <p className="text-sm text-gray-500">{getHumidityMessage(humidity).split(";")[1]}</p>
+
+                    </div>
                 </div>
             </div>
             <div className='card-variant'>
                 <p className="card-title">Pressure</p>
-                <div className='flex items-center justify-between text-3xl'>
+                <div className='flex flex-col md:flex-row items-center  justify-between text-3xl'>
                     <GaugeIcon className="h-10 w-10" />
-                    <p>{pressure} <span className='text-xl'>{pressureUnit}</span></p>
+                    <div className="flex flex-col items-center gap-1 ">
+                        <p>{pressureDisplay} <span className='text-xl'>{pressureUnit}</span></p>
+                        <p className="text-sm text-gray-500">{getPressureMessage(pressure).split(";")[0]}</p>
+                        <p className="text-sm text-gray-500">{getPressureMessage(pressure).split(";")[1]}</p>
+
+                    </div>
                 </div>
             </div>
             <div className='card-variant'>
                 <p className="card-title">Visibility</p>
-                <div className='flex items-center justify-between text-3xl'>
+                <div className='flex flex-col md:flex-row items-center  justify-between text-3xl'>
                     <View className='h-10 w-10' />
-                    <p>{visibility} <span className='text-xl'>{visibilityUnit}</span></p>
+                    <div className="flex flex-col items-center gap-1 ">
+
+                        <p>{visibilityDisplay} <span className='text-xl'>{visibilityUnit}</span></p>
+                        <p className="text-sm text-gray-500">{getVisibilityMessage(visibility).split(";")[0]}</p>
+                        <p className="text-sm text-gray-500">{getVisibilityMessage(visibility).split(";")[1]}</p>
+
+                    </div>
                 </div>
             </div>
             <div className='card-variant'>
                 <p className="card-title">Feels Like</p>
-                <div className='flex items-center justify-between text-3xl'>
+                <div className='flex flex-col md:flex-row items-center  justify-between text-3xl'>
                     <Thermometer className="w-10 h-10" />
-                    <p>{temperature} <span className='text-xl'>{temperatureUnit}</span></p>
+                    <div className="flex flex-col items-center gap-1 ">
+                        <p>{temperatureDisplay} <span className='text-xl'>{temperatureUnit}</span></p>
+                        <p className="text-sm text-gray-500">{getTemperatureMessage(temperatureDisplay).split(";")[0]}</p>
+                        <p className="text-sm text-gray-500">{getTemperatureMessage(temperatureDisplay).split(";")[1]}</p>
+                    </div>
                 </div>
             </div>
         </div>
